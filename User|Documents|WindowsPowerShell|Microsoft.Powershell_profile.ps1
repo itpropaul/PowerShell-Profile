@@ -7,7 +7,7 @@ function gitp {git push}
 function gits {git status}
 
 # Use Bash Vim from powershell
-# Make sure to use this formatting: vi /mnt/c/Users/username/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 
+# Make sure to use this formatting: vi /mnt/c/Users/pmasek/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 
 function vi ($File){
 bash -c "vi $File"
 }
@@ -38,7 +38,7 @@ ls $File | Select Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
 
 # The following code makes the command history persistent for Ctrl+R goodness. 
 # It is written by Boe Prox - https://mcpmag.com/articles/2016/03/17/a-look-at-powershell-history.aspx
-$HistoryPath = 'C:\users\username\Documents\WindowsPowerShell\History'
+$HistoryPath = 'C:\users\pmasek\Documents\WindowsPowerShell\History'
 
   If (Test-Path  "$HistoryPath\History.xml") {
 
@@ -62,14 +62,14 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-# The following couple commands are based on https://github.com/alexanderepstein/Bash-Snippets that I
-# have installed on Bash on Windows.
+# The following two commands are based on https://github.com/alexanderepstein/Bash-Snippets that I
+# have installed on Bash on Windows (via the "Git Install" method - will be able to update via "Git Update").
 
 # Show the weather for 46807 upon PowerShell load
 bash -c "weather 46807"
 
 # Show the available Bash-Snippets Utilities
-bash -c "echo 'Bash-Snippets Utilities (To run from PowerShell: bash -c comand):';cat /mnt/c/Users/username/Bash-Snippets/README.md |grep -m 14 '^## '|tr -d '\n';echo"
+bash -c "echo 'Bash-Snippets Utilities (To run from PowerShell: bash -c comand):';cat /mnt/c/Users/pmasek/Bash-Snippets/README.md |grep -m 19 '^<summary>' |cut -f2 -d'>' |cut -f1 -d'<' |tr -d '\n';echo"
 
 # from: http://community.idera.com/powershell/powertips/b/tips/posts/find-installed-software
 function Get-InstalledSoftware
