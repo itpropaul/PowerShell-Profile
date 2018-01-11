@@ -36,25 +36,10 @@ Function Get-FileSize ($File){
 ls $File | Select Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
 }
 
-# The following code makes the command history persistent for Ctrl+R goodness. 
-# It is written by Boe Prox - https://mcpmag.com/articles/2016/03/17/a-look-at-powershell-history.aspx
-$HistoryPath = 'C:\users\pmasek\Documents\WindowsPowerShell\History'
-
-  If (Test-Path  "$HistoryPath\History.xml") {
-
-  Add-History  -InputObject (Import-Clixml  "$HistoryPath\History.xml")
-
-  }  ElseIf (-NOT  (Test-Path $HistoryPath))  {
-
-  $null = New-Item -Path $HistoryPath  -ItemType Directory
-
-}
-
-Register-EngineEvent -SourceIdentifier powershell.exiting  -SupportEvent -Action  {  
-
-  Get-History  | Select-Object  -Last 9999 | Export-Clixml -Path "$HistoryPath\History.xml"
-
-} 
+# The previous code here to make commandline history persistent is no longer needed. See these two articles for how / where Powershell
+# saves the commandline history and how to access it.
+# https://blogs.technet.microsoft.com/heyscriptingguy/2014/06/18/better-powershell-history-management-with-psreadline/
+# https://www.jaapbrasser.com/quicktip-powershell-command-history-on-windows-10-using-psreadline/
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
