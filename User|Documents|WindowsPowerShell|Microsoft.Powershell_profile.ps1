@@ -32,11 +32,9 @@ ls $File | Select Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
 # This function pipes to Excel and instantly opens in Excel. It puts the csv in temp, so that you don't need to clean up after.
 function Out-Excel 
 {
-
   param(
     $path = "$env:temp\report$(Get-Date -Format yyyyMMddHHmmss).csv"
   )
-  
   $Input | 
     Export-Csv $path -NoTypeInformation -UseCulture -Encoding UTF8
     Invoke-Item $path 
