@@ -2,6 +2,14 @@
 ## Module Path = C:\Program Files\WindowsPowerShell\Modules ##
 ##############################################################
 
+# The following "isadmin" function is from: https://ss64.com/ps/syntax-elevate.html
+# A function that will return $True if the current session is running elevated or $False if not:
+function isadmin
+ {
+ # Returns true/false
+   ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
+ }
+
 # Looks up the command name for an alias like Get-Alias, but also returns other aliases associated with the discovered command.
 function Get-AllAliases ($Name){
 Get-Alias $name |
