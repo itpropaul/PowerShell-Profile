@@ -2,7 +2,6 @@
 ## Module Path = C:\Program Files\WindowsPowerShell\Modules ##
 ##############################################################
 
-
 # Looks up the command name for an alias like Get-Alias, but also returns other aliases associated with the discovered command.
 function Get-AllAliases ($Name){
 Get-Alias $name |
@@ -26,7 +25,6 @@ Function Format-FileSize() {
 Function Get-FileSize ($File){
 ls $File | Select Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
 }
-
 
 # from: http://community.idera.com/powershell/powertips/b/tips/posts/pipe-information-to-excel
 # This function pipes to Excel and instantly opens in Excel. It puts the csv in temp, so that you don't need to clean up after.
